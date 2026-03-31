@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Events — ProjectRebootNEU</title>
+    <meta
+      name="description"
+      content="ProjectRebootNEU — in-person events with no feeds, no notifications."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#content">Skip to content</a>
+
+    <nav class="site-nav" aria-label="Site sections">
+      <div class="site-nav-inner wrap">
+        <div class="site-nav-logo" aria-hidden="true">
+          <img src="logo.png" width="120" height="120" decoding="async" alt="" />
+        </div>
+        <a class="site-nav-link" href="the-mission.html">Our Mission</a>
+        <a class="site-nav-link" href="events.html" aria-current="page">Events</a>
+        <a class="site-nav-link" href="fuel-the-movement.html">Fuel the Movement</a>
+      </div>
+    </nav>
+
+    <main id="content" class="subpage-main events-page-main wrap">
+      <p class="events-intro mission-tone">
+        Break the mindless loop. Make real connection.
+      </p>
+      <h2 class="event-title">
+        <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSdcpg05tMID0-cQ5RAubQHf190PSKb0CsXMEzDgK-Iiuh-JRQ/viewform?usp=publish-editor"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Blind Dating</a
+        >
+      </h2>
+      <p class="event-brief mission-tone">
+        Get matched with someone based on your personality and interests.<br />
+        Go through &quot;36 questions to fall in love&quot; with them.<br />
+        Applications open until <strong>4/8/26</strong>.
+      </p>
+
+      <section
+        class="join-block join-block--on-events join-await-reveal"
+        id="signup"
+        aria-labelledby="interest-heading"
+      >
+        <div class="join-header-row">
+          <h2 id="interest-heading" class="join-title">Stay Informed</h2>
+        </div>
+        <!-- Hook up Formspree, Netlify Forms, or your backend: set action + method -->
+        <form
+          id="interest-form"
+          class="join-form"
+          action="#"
+          method="post"
+          novalidate
+        >
+          <div class="join-email-row">
+            <label class="visually-hidden" for="email-events">Email address</label>
+            <input
+              type="email"
+              id="email-events"
+              name="email"
+              class="join-input"
+              autocomplete="email"
+              inputmode="email"
+              placeholder="Email"
+              required
+            />
+            <a
+              class="join-instagram"
+              href="https://www.instagram.com/projectrebootneu/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="ProjectRebootNEU on Instagram"
+            >
+              <svg
+                class="join-instagram-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  fill="currentColor"
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+                />
+              </svg>
+            </a>
+          </div>
+          <p class="form-success" id="form-success" hidden role="status">
+            Thanks—you’re on the list.
+          </p>
+        </form>
+      </section>
+    </main>
+
+    <footer class="site-disclaimer">
+      <div class="wrap disclaimer-inner">
+        <p>
+          * ProjectRebootNEU is an independent student initiative and is not
+          officially affiliated with or endorsed by Northeastern University. *
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        var form = document.getElementById("interest-form");
+        var email = document.getElementById("email-events");
+        var success = document.getElementById("form-success");
+        var intro = document.querySelector(".events-intro");
+        var eventTitleLink = document.querySelector(".event-title a");
+        var eventBrief = document.querySelector(".event-brief");
+        var revealEls = document.querySelectorAll(".events-page-main .join-await-reveal");
+        if (!form || !email || !intro || !eventTitleLink || !eventBrief) return;
+
+        form.addEventListener("submit", function (e) {
+          var rawAction = form.getAttribute("action");
+          var isDemo =
+            !rawAction || rawAction === "#" || rawAction.trim() === "";
+          if (isDemo) {
+            e.preventDefault();
+            if (!email.checkValidity()) {
+              email.reportValidity();
+              return;
+            }
+            success.hidden = false;
+            form.reset();
+            email.focus();
+          }
+        });
+
+        var reduced =
+          window.matchMedia &&
+          window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        function revealBelow() {
+          for (var i = 0; i < revealEls.length; i++) {
+            revealEls[i].classList.add("join-await-reveal--shown");
+          }
+        }
+
+        if (reduced) {
+          intro.textContent =
+            "Break the mindless loop. Make real connection.";
+          eventTitleLink.textContent = "Blind Dating";
+          eventBrief.innerHTML =
+            'Get matched with someone based on your personality and interests.<br />' +
+            'Go through &quot;36 questions to fall in love&quot; with them.<br />' +
+            'Applications open until <strong>4/8/26</strong>.';
+          revealBelow();
+          return;
+        }
+
+        var introText = intro.innerText.replace(/\r/g, "");
+        var titleText = eventTitleLink.innerText.replace(/\r/g, "");
+        intro.innerHTML = "";
+        eventTitleLink.innerHTML = "";
+        eventBrief.innerHTML = "";
+        var introNode = document.createTextNode("");
+        var titleNode = document.createTextNode("");
+        intro.appendChild(introNode);
+        eventTitleLink.appendChild(titleNode);
+
+        var MS_PER_CHAR = 60000 / (230 * 5);
+        var PERIOD_EXTRA_MS = 170;
+        var PERIOD_EXTRA_JITTER_MS = 105;
+        var COMMA_EXTRA_MS = 48;
+        var COMMA_EXTRA_JITTER_MS = 30;
+        var introPos = 0;
+        var titlePos = 0;
+
+        var briefSegments = [
+          {
+            kind: "text",
+            text: "Get matched with someone based on your personality and interests.",
+          },
+          { kind: "br" },
+          {
+            kind: "text",
+            text: 'Go through "36 questions to fall in love" with them.',
+          },
+          { kind: "br" },
+          { kind: "text", text: "Applications open until " },
+          { kind: "strong", text: "4/8/26" },
+          { kind: "text", text: "." },
+        ];
+        var briefSegIdx = 0;
+        var briefSegPos = 0;
+        var briefCurrentNode = null;
+
+        function after(ms, fn) {
+          window.setTimeout(fn, ms);
+        }
+
+        function charDelay(ch, idx, plain) {
+          var delay = MS_PER_CHAR;
+          if (ch === ",") {
+            delay += COMMA_EXTRA_MS + Math.random() * COMMA_EXTRA_JITTER_MS;
+          }
+          if (ch === ".") {
+            var next = plain.charAt(idx + 1);
+            if (next === "" || next === " " || next === "\n") {
+              delay += PERIOD_EXTRA_MS + Math.random() * PERIOD_EXTRA_JITTER_MS;
+            }
+          }
+          return delay;
+        }
+
+        function typeBriefChar() {
+          if (briefSegIdx >= briefSegments.length) {
+            revealBelow();
+            return;
+          }
+          var seg = briefSegments[briefSegIdx];
+          if (briefSegPos >= seg.text.length) {
+            briefSegIdx += 1;
+            briefSegPos = 0;
+            briefCurrentNode = null;
+            startBriefSegment();
+            return;
+          }
+          var ch = seg.text.charAt(briefSegPos);
+          briefCurrentNode.textContent += ch;
+          var idx = briefSegPos;
+          briefSegPos += 1;
+          after(charDelay(ch, idx, seg.text), typeBriefChar);
+        }
+
+        function startBriefSegment() {
+          if (briefSegIdx >= briefSegments.length) {
+            revealBelow();
+            return;
+          }
+          var seg = briefSegments[briefSegIdx];
+          if (seg.kind === "br") {
+            eventBrief.appendChild(document.createElement("br"));
+            briefSegIdx += 1;
+            startBriefSegment();
+            return;
+          }
+          if (seg.kind === "text") {
+            briefCurrentNode = document.createTextNode("");
+            eventBrief.appendChild(briefCurrentNode);
+            typeBriefChar();
+            return;
+          }
+          if (seg.kind === "strong") {
+            var strongEl = document.createElement("strong");
+            briefCurrentNode = document.createTextNode("");
+            strongEl.appendChild(briefCurrentNode);
+            eventBrief.appendChild(strongEl);
+            typeBriefChar();
+            return;
+          }
+        }
+
+        function typeTitle() {
+          if (titlePos >= titleText.length) {
+            startBriefSegment();
+            return;
+          }
+          var ch = titleText.charAt(titlePos);
+          titleNode.textContent += ch;
+          var idx = titlePos;
+          titlePos += 1;
+          after(charDelay(ch, idx, titleText), typeTitle);
+        }
+
+        function typeIntro() {
+          if (introPos >= introText.length) {
+            typeTitle();
+            return;
+          }
+          var ch = introText.charAt(introPos);
+          introNode.textContent += ch;
+          var idx = introPos;
+          introPos += 1;
+          after(charDelay(ch, idx, introText), typeIntro);
+        }
+
+        typeIntro();
+      })();
+    </script>
+  </body>
+</html>

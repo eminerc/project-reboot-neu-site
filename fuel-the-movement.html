@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Fuel the Movement — ProjectRebootNEU</title>
+    <meta
+      name="description"
+      content="ProjectRebootNEU — support and grow the movement."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#content">Skip to content</a>
+
+    <nav class="site-nav" aria-label="Site sections">
+      <div class="site-nav-inner wrap">
+        <div class="site-nav-logo" aria-hidden="true">
+          <img src="logo.png" width="120" height="120" decoding="async" alt="" />
+        </div>
+        <a class="site-nav-link" href="the-mission.html">Our Mission</a>
+        <a class="site-nav-link" href="events.html">Events</a>
+        <a class="site-nav-link" href="fuel-the-movement.html" aria-current="page">Fuel the Movement</a>
+      </div>
+    </nav>
+
+    <main id="content" class="subpage-main fuel-page-main wrap">
+      <p class="fuel-intro mission-tone">
+        Have any ideas?<br /><br />
+        Email
+        <a href="mailto:weglarz.na@northeastern.edu">weglarz.na@northeastern.edu</a>.
+      </p>
+    </main>
+
+    <footer class="site-disclaimer">
+      <div class="wrap disclaimer-inner">
+        <p>
+          * ProjectRebootNEU is an independent student initiative and is not
+          officially affiliated with or endorsed by Northeastern University. *
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        var intro = document.querySelector(".fuel-intro");
+        if (!intro) return;
+
+        var reduced =
+          window.matchMedia &&
+          window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        if (reduced) return;
+
+        var link = intro.querySelector("a");
+        if (!link) return;
+
+        var prefixText =
+          "Have any ideas?";
+        var secondLinePrefix = "Email ";
+        var emailText = "weglarz.na@northeastern.edu";
+        var trailingPeriod = ".";
+
+        intro.innerHTML = "";
+        var prefixNode = document.createTextNode("");
+        var lineBreak = document.createElement("br");
+        var blankLineBreak = document.createElement("br");
+        var secondLineNode = document.createTextNode("");
+        var trailingPeriodNode = document.createTextNode("");
+        intro.appendChild(prefixNode);
+        intro.appendChild(lineBreak);
+        intro.appendChild(blankLineBreak);
+        intro.appendChild(secondLineNode);
+        link.textContent = "";
+        intro.appendChild(link);
+        intro.appendChild(trailingPeriodNode);
+
+        var MS_PER_CHAR = 60000 / (230 * 5);
+        var PERIOD_EXTRA_MS = 170;
+        var PERIOD_EXTRA_JITTER_MS = 105;
+        var COMMA_EXTRA_MS = 48;
+        var COMMA_EXTRA_JITTER_MS = 30;
+
+        function after(ms, fn) {
+          window.setTimeout(fn, ms);
+        }
+
+        function charDelay(ch, idx, plain) {
+          var delay = MS_PER_CHAR;
+          if (ch === ",") {
+            delay += COMMA_EXTRA_MS + Math.random() * COMMA_EXTRA_JITTER_MS;
+          }
+          if (ch === ".") {
+            var next = plain.charAt(idx + 1);
+            if (next === "" || next === " " || next === "\n") {
+              delay += PERIOD_EXTRA_MS + Math.random() * PERIOD_EXTRA_JITTER_MS;
+            }
+          }
+          return delay;
+        }
+
+        var prefixPos = 0;
+        var secondLinePos = 0;
+        var emailPos = 0;
+        var periodPos = 0;
+
+        function typePeriod() {
+          if (periodPos >= trailingPeriod.length) return;
+          var ch = trailingPeriod.charAt(periodPos);
+          trailingPeriodNode.textContent += ch;
+          var idx = periodPos;
+          periodPos += 1;
+          after(charDelay(ch, idx, trailingPeriod), typePeriod);
+        }
+
+        function typeEmail() {
+          if (emailPos >= emailText.length) {
+            typePeriod();
+            return;
+          }
+          var ch = emailText.charAt(emailPos);
+          link.textContent += ch;
+          var idx = emailPos;
+          emailPos += 1;
+          after(charDelay(ch, idx, emailText), typeEmail);
+        }
+
+        function typeSecondLine() {
+          if (secondLinePos >= secondLinePrefix.length) {
+            typeEmail();
+            return;
+          }
+          var ch = secondLinePrefix.charAt(secondLinePos);
+          secondLineNode.textContent += ch;
+          var idx = secondLinePos;
+          secondLinePos += 1;
+          after(charDelay(ch, idx, secondLinePrefix), typeSecondLine);
+        }
+
+        function typePrefix() {
+          if (prefixPos >= prefixText.length) {
+            typeSecondLine();
+            return;
+          }
+          var ch = prefixText.charAt(prefixPos);
+          prefixNode.textContent += ch;
+          var idx = prefixPos;
+          prefixPos += 1;
+          after(charDelay(ch, idx, prefixText), typePrefix);
+        }
+
+        typePrefix();
+      })();
+    </script>
+  </body>
+</html>
