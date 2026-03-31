@@ -846,6 +846,10 @@ body:not(.mission-first) > main {
     flex-wrap: wrap;
   }
 
+  .join-email-row .join-logo {
+    display: none;
+  }
+
   .join-email-field-group {
     flex: 1 1 100%;
     grid-template-columns: 1fr auto;
