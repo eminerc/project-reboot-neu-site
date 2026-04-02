@@ -283,8 +283,13 @@
           window.setTimeout(fn, ms);
         }
 
+        /* Hold auto-scroll so the first line stays readable before the page starts chasing the cursor */
+        var MISSION_AUTO_SCROLL_DELAY_MS = 1400;
+        var missionAutoScrollAfter = 0;
+
         var autoScrollRaf = 0;
         function requestAutoScrollToBottom() {
+          if (performance.now() < missionAutoScrollAfter) return;
           function run() {
             autoScrollRaf = 0;
             var root = document.scrollingElement || document.documentElement;
@@ -434,6 +439,7 @@
         }
 
         function revealNavAndJoin() {
+          missionAutoScrollAfter = 0;
           try {
             window.localStorage.setItem(MISSION_INTRO_KEY, "1");
           } catch (e) {}
@@ -475,6 +481,7 @@
           }
         }
 
+        missionAutoScrollAfter = performance.now() + MISSION_AUTO_SCROLL_DELAY_MS;
         typeLine(0);
       })();
     </script>
