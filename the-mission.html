@@ -87,13 +87,24 @@
         aria-labelledby="interest-heading-mission"
       >
         <h2 id="interest-heading-mission" class="join-title">Stay Informed</h2>
+        <!-- Submissions: FormSubmit → weglarz.na@northeastern.edu (first submit triggers an activation email from FormSubmit) -->
         <form
           id="interest-form-mission"
           class="join-form"
-          action="#"
+          action="https://formsubmit.co/weglarz.na@northeastern.edu"
           method="post"
           novalidate
         >
+          <input type="hidden" name="_subject" value="ProjectRebootNEU — Stay Informed signup" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input
+            type="text"
+            name="_honey"
+            class="join-honeypot"
+            tabindex="-1"
+            autocomplete="off"
+            aria-hidden="true"
+          />
           <div class="join-email-row">
             <img
               class="join-logo"
@@ -139,6 +150,7 @@
           <p class="form-success" id="form-success-mission" hidden role="status">
             Thanks—you’re on the list.
           </p>
+          <p class="form-error" id="form-error-mission" hidden role="alert"></p>
         </form>
       </section>
     </main>
@@ -157,24 +169,66 @@
         var form = document.getElementById("interest-form-mission");
         var email = document.getElementById("email-mission");
         var success = document.getElementById("form-success-mission");
+        var formError = document.getElementById("form-error-mission");
         var joinBlock = document.getElementById("signup-mission");
         var siteNav = document.getElementById("site-nav-mission");
 
+        var FORMSUBMIT_STAY_INFORMED =
+          "https://formsubmit.co/ajax/weglarz.na@northeastern.edu";
+        var formSubmitting = false;
+
         if (form && email && success) {
           form.addEventListener("submit", function (e) {
-            var rawAction = form.getAttribute("action");
-            var isDemo =
-              !rawAction || rawAction === "#" || rawAction.trim() === "";
-            if (isDemo) {
-              e.preventDefault();
-              if (!email.checkValidity()) {
-                email.reportValidity();
-                return;
-              }
-              success.hidden = false;
-              form.reset();
-              email.focus();
+            e.preventDefault();
+            if (formSubmitting) return;
+            if (!email.checkValidity()) {
+              email.reportValidity();
+              return;
             }
+            if (formError) {
+              formError.hidden = true;
+              formError.textContent = "";
+            }
+            success.hidden = true;
+            formSubmitting = true;
+            var fd = new FormData(form);
+            fd.set("_subject", "ProjectRebootNEU — Stay Informed signup");
+            fd.set("_captcha", "false");
+            fetch(FORMSUBMIT_STAY_INFORMED, {
+              method: "POST",
+              body: fd,
+              headers: { Accept: "application/json" },
+            })
+              .then(function (res) {
+                return res.json().then(function (data) {
+                  return { res: res, data: data };
+                });
+              })
+              .then(function (out) {
+                if (out.res.ok) {
+                  success.hidden = false;
+                  form.reset();
+                  email.focus();
+                } else if (formError) {
+                  var msg =
+                    (out.data &&
+                      (out.data.error || out.data.message || out.data.errors)) ||
+                    "Couldn’t add you just now. Try again.";
+                  formError.textContent =
+                    typeof msg === "string" ? msg : "Couldn’t add you just now. Try again.";
+                  formError.hidden = false;
+                }
+              })
+              .catch(function () {
+                if (formError) {
+                  formError.textContent =
+                    "Couldn’t send. Check your connection, or email weglarz.na@northeastern.edu.";
+                  formError.hidden = false;
+                }
+              })
+              .finally(function () {
+                formSubmitting = false;
+              });
           });
         }
 
